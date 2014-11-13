@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Web GL Homework 3</title>
+    <script src="http://www.magic.ubc.ca/webgl-pg/uploads/examples/lib/webgl-debug.js"></script>
+    <script src="http://www.magic.ubc.ca/webgl-pg/uploads/examples/lib/webgl-utils.js"></script>
+    <script src="http://www.magic.ubc.ca/webgl-pg/uploads/examples/lib/cuon-utils.js"></script>
+    <script src="http://www.magic.ubc.ca/webgl-pg/uploads/examples/lib/cuon-matrix.js"></script>
+</head>
+<body>
+<canvas id="waveSim" width="600px" height="600px">Womp</canvas>
+<h3>Boop</h3>
+<form id="canvasIn">
+    <label for="SinX">Sin X<input name="SinX" id="SinX" type="range" max="180"><span id="SinXSpan"></span></label>
+    <label for="CosX">Cos X<input name="CosX" id="CosX" type="range" max="180"><span id="CosXSpan"></span></label>
+    <label for="SinY">Sin Y<input name="SinY" id="SinY" type="range" max="180"><span id="SinYSpan"></span></label>
+    <label for="CosY">Cos Y<input name="CosY" id="CosY" type="range" max="180"><span id="CosYSpan"></span></label>
+    <br />
+    <label for="gridSize">Grid Size<input name="gridSize" id="gridSize" type="number" value="64"><span id="gridSizeSpan"></span></label>
+</form>
+<script type="x-shader/x-vertex" id="waveSim-vertex">
+    attribute vec4 vNormal;
+    attribute vec4 vPosition;
+
+    uniform mat4 uMvpMat;
+    uniform mat4 uNormalMat;
+
+
+    varying vec4 vColor;
+
+    void main(){
+        gl_Position = vPosition;
+    }
+</script>
+
+<script type="x-shader/x-fragment" id="waveSim-fragment">
+    //varying vec4 vColor;
+
+    void main (){
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    }
+</script>
+
+<!-- By putting this at the end, everything is loaded and ready to go! -->
+<script src="js/waveSim.js"></script>
+
+</body>
+</html>
